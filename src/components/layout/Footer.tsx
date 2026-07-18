@@ -54,7 +54,7 @@ export default function Footer() {
         {/* Col 1 */}
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <SNPLogo className="w-20 h-20 md:w-24 md:h-24" />
+            <SNPLogo className="w-24 h-24 md:w-28 md:h-28" />
             <div className="text-[#F8D794] font-bebas tracking-[0.2em] text-sm uppercase -mt-2">
               SIZZLE <span className="text-[#9C0512]">•</span> SLICE <span className="text-[#9C0512]">•</span> SMILE
             </div>

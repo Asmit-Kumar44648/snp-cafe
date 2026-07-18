@@ -127,7 +127,7 @@ export default function Navbar() {
           {/* Center Logo */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[60]">
             <Link to="/" onClick={handleHomeClick} className="nav-item flex flex-col items-center justify-center">
-              <SNPLogo className="w-11 h-11 md:w-14 md:h-14" />
+              <SNPLogo className="w-14 h-14 md:w-18 md:h-18" />
             </Link>
           </div>
 
