@@ -10,7 +10,7 @@ export default function SNPLogo({ className = 'w-16 h-16' }: SNPLogoProps) {
     <img
       src={snpLogo}
       alt="Sizzler 'n' Pizza Cafe Logo"
-      className={`${className} rounded-full object-cover border border-[#F8D794]/20 hover:border-[#F8D794]/50 bg-[#0E0000] transition-transform duration-200 hover:scale-110 cursor-pointer`}
+      className={`${className} rounded-full object-contain transition-transform duration-200 hover:scale-110 cursor-pointer drop-shadow-lg`}
     />
   );
 }
