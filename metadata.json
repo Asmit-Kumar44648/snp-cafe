@@ -1,0 +1,8 @@
+{
+  "name": "SNP Cafe",
+  "description": "Sizzler 'n Pizza Cafe Landing Page. Dark luxury street food aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

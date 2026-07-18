@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bordeaux: #0E0000;
+  --color-mahogany: #64090C;
+  --color-red-carriage: #9C0512;
+  --color-pastel-beige: #EFEACD;
+  --color-ceramic-yellow: #F8D794;
+  --color-pure-black: #080808;
+  --color-glass-white: rgba(239, 234, 205, 0.06);
+  --color-glass-dark: rgba(100, 9, 12, 0.3);
+
+  --font-display: "Playfair Display", serif;
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Space Grotesk", sans-serif;
+  --font-bebas: "Bebas Neue", sans-serif;
+}
+
+body {
+  background-color: var(--color-bordeaux);
+  color: var(--color-pastel-beige);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+.glass-card {
+  background: var(--color-glass-dark);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-white);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--color-pastel-beige), var(--color-ceramic-yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
