@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Link } from 'react-router-dom';
 import { getWhatsAppLink, prefilledMessages } from '../../lib/whatsapp';
-import heroBg from '../../assets/images/hero_bg_1781296299323.jpg';
+import pizzaHeroBg from '../../assets/images/pizza_hero_backdrop.png';
 
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
@@ -43,8 +43,11 @@ export default function Hero() {
     <section id="home" ref={container} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0E0000]" data-section="hero">
       {/* Background */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-65 transition-all duration-700"
+        style={{ 
+          backgroundImage: `url(${pizzaHeroBg})`,
+          filter: 'blur(3px) sepia(20%) brightness(0.65) contrast(1.05)'
+        }}
       />
       
       {/* Radial Gradient overlay */}

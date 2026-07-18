@@ -48,10 +48,13 @@ export default function Menu({ limit, isHomePage = false }: MenuProps) {
     // 1. PIZZAS
     if (cat === "pizza's") {
       if (itemName.includes("margherita")) return "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("corn")) return "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("corn")) return "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80";
       if (itemName.includes("paneer") || itemName.includes("tandoori")) return "https://images.unsplash.com/photo-1594009242813-bfa45914543d?auto=format&fit=crop&w=600&q=80";
       if (itemName.includes("chicken")) return "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80";
       if (itemName.includes("volcano")) return "https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("mexican") || itemName.includes("farmhouse") || itemName.includes("extravaganza") || itemName.includes("otc")) {
+        return "https://images.unsplash.com/photo-1571066811602-71683a3f680d?auto=format&fit=crop&w=600&q=80";
+      }
       return "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80";
     }
 
@@ -59,14 +62,15 @@ export default function Menu({ limit, isHomePage = false }: MenuProps) {
     if (cat === "burgers") {
       if (itemName.includes("aloo") || itemName.includes("veg")) return "https://images.unsplash.com/photo-1585238342024-78d387f4a707?auto=format&fit=crop&w=600&q=80";
       if (itemName.includes("paneer")) return "https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("chicken")) return "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("chicken")) return "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("chilli")) return "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80";
       return "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80";
     }
 
     // 3. SANDWICHES
     if (cat === "sandwiches") {
       if (itemName.includes("cheese") || itemName.includes("corn")) return "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("paneer") || itemName.Tikka || itemName.includes("chicken")) return "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("paneer") || itemName.includes("tikka") || itemName.includes("chicken")) return "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80";
       return "https://images.unsplash.com/photo-1539252554453-80ab65ce3586?auto=format&fit=crop&w=600&q=80";
     }
 
@@ -75,7 +79,7 @@ export default function Menu({ limit, isHomePage = false }: MenuProps) {
       if (itemName.includes("wrap")) {
         return "https://images.unsplash.com/photo-1626700051175-6518c4793f4f?auto=format&fit=crop&w=600&q=80";
       }
-      if (itemName.includes("fried") || itemName.includes("kurkure")) {
+      if (itemName.includes("fried") || itemName.includes("kurkure") || itemName.includes("dragon") || itemName.includes("pan fried")) {
         return "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=600&q=80";
       }
       return "https://images.unsplash.com/photo-1625220194771-7ebedd0b70b4?auto=format&fit=crop&w=600&q=80";
@@ -91,29 +95,46 @@ export default function Menu({ limit, isHomePage = false }: MenuProps) {
 
     // 6. SIZZLERS & COMBOS
     if (cat === "sizzlers & combos") {
-      return "/src/assets/images/menu_sizzler.png";
+      if (itemName.includes("combo")) {
+        return "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80";
+      }
+      return "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80";
     }
 
     // 7. SNACKS & PASTA
     if (cat === "snacks & pasta") {
       if (itemName.includes("fries")) return "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("garlic")) return "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("popcorn") || itemName.includes("balls")) return "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80";
       if (itemName.includes("pasta")) {
         if (itemName.includes("red")) return "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80";
         return "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80";
       }
-      return "https://images.unsplash.com/photo-1531749668029-2db88e4b76ce?auto=format&fit=crop&w=600&q=80";
+      return "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80";
     }
 
     // 8. DRINKS & DESSERTS
     if (cat === "drinks & desserts") {
       if (itemName.includes("shake")) return "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("mojito") || itemName.includes("blue") || itemName.includes("mint") || itemName.includes("strawberry")) {
+      if (itemName.includes("mojito") || itemName.includes("blue") || itemName.includes("mint") || itemName.includes("strawberry") || itemName.includes("virgin")) {
         return "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80";
       }
-      if (itemName.includes("coffee") || itemName.includes("latte") || itemName.includes("cappuccino")) {
+      if (itemName.includes("coffee") || itemName.includes("latte") || itemName.includes("cappuccino") || itemName.includes("dalgona")) {
+        if (itemName.includes("cold") || itemName.includes("iced") || itemName.includes("dalgona")) {
+          return "https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=600&q=80";
+        }
         return "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80";
       }
-      return "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("ice cream")) return "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("brownie") || itemName.includes("lava cake")) return "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("donut")) return "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80";
+      if (itemName.includes("water")) return "https://images.unsplash.com/photo-1608885898957-a599fb1863fc?auto=format&fit=crop&w=600&q=80";
+      return "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80";
+    }
+
+    // 9. ADD-ONS / FALLBACKS
+    if (cat === "add-ons") {
+      return "https://images.unsplash.com/photo-1594009242813-bfa45914543d?auto=format&fit=crop&w=600&q=80";
     }
 
     return imagePath;
