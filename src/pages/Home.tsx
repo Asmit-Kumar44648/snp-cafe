@@ -2,7 +2,7 @@ import Hero from '../components/sections/Hero';
 import Marquee from '../components/sections/Marquee';
 import About from '../components/sections/About';
 import ReelGlider from '../components/sections/ReelGlider';
-import WeeklyLineup from '../components/sections/WeeklyLineup';
+import GalleryPreview from '../components/sections/GalleryPreview';
 import Menu from '../components/sections/Menu';
 import Reviews from '../components/sections/Reviews';
 import Collab from '../components/sections/Collab';
@@ -16,7 +16,7 @@ export default function Home() {
       <Marquee />
       <About />
       <ReelGlider reels={dummyReels} />
-      <WeeklyLineup />
+      <GalleryPreview />
       <div id="menu">
         <Menu isHomePage limit={6} />
       </div>
