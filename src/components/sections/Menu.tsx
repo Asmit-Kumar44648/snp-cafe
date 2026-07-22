@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { menuCategories, menuItems } from '../../data/menu';
-import { Leaf, Flame, Info, ArrowRight, Search, X, ShoppingCart } from 'lucide-react';
+import { Search, X, ShoppingCart, Plus, Check, Sparkles } from 'lucide-react';
 
 interface MenuProps {
   limit?: number;
@@ -13,6 +13,7 @@ export default function Menu({ limit, isHomePage = false }: MenuProps) {
   const [activeCategory, setActiveCategory] = useState(menuCategories[0].trim().toLowerCase());
   const [dietaryPreference, setDietaryPreference] = useState<'all' | 'veg' | 'non-veg'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [addedIds, setAddedIds] = useState<Record<number, boolean>>({});
 
   let filteredItems = menuItems.filter(item => {
     const categoryMatch = item.category.trim().toLowerCase() === activeCategory;
@@ -39,324 +40,254 @@ export default function Menu({ limit, isHomePage = false }: MenuProps) {
       },
     });
     window.dispatchEvent(event);
-  };
 
-  const getPremiumImage = (imagePath: string, name: string, category: string) => {
-    const itemName = name.toLowerCase();
-    const cat = category.trim().toLowerCase();
-
-    // 1. PIZZAS
-    if (cat === "pizza's") {
-      if (itemName.includes("margherita")) return "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("corn")) return "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("paneer") || itemName.includes("tandoori")) return "https://images.unsplash.com/photo-1594009242813-bfa45914543d?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("chicken")) return "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("volcano")) return "https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("mexican") || itemName.includes("farmhouse") || itemName.includes("extravaganza") || itemName.includes("otc")) {
-        return "https://images.unsplash.com/photo-1571066811602-71683a3f680d?auto=format&fit=crop&w=600&q=80";
-      }
-      return "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80";
-    }
-
-    // 2. BURGERS
-    if (cat === "burgers") {
-      if (itemName.includes("aloo") || itemName.includes("veg")) return "https://images.unsplash.com/photo-1585238342024-78d387f4a707?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("paneer")) return "https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("chicken")) return "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("chilli")) return "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80";
-      return "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80";
-    }
-
-    // 3. SANDWICHES
-    if (cat === "sandwiches") {
-      if (itemName.includes("cheese") || itemName.includes("corn")) return "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("paneer") || itemName.includes("tikka") || itemName.includes("chicken")) return "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80";
-      return "https://images.unsplash.com/photo-1539252554453-80ab65ce3586?auto=format&fit=crop&w=600&q=80";
-    }
-
-    // 4. MOMOS & WRAPS
-    if (cat === "momos & wraps") {
-      if (itemName.includes("wrap")) {
-        return "https://images.unsplash.com/photo-1626700051175-6518c4793f4f?auto=format&fit=crop&w=600&q=80";
-      }
-      if (itemName.includes("fried") || itemName.includes("kurkure") || itemName.includes("dragon") || itemName.includes("pan fried")) {
-        return "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=600&q=80";
-      }
-      return "https://images.unsplash.com/photo-1625220194771-7ebedd0b70b4?auto=format&fit=crop&w=600&q=80";
-    }
-
-    // 5. FRIED CHICKEN & KOREAN
-    if (cat === "fried chicken & korean") {
-      if (itemName.includes("ramen")) {
-        return "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80";
-      }
-      return "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80";
-    }
-
-    // 6. SIZZLERS & COMBOS
-    if (cat === "sizzlers & combos") {
-      if (itemName.includes("combo")) {
-        return "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80";
-      }
-      return "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80";
-    }
-
-    // 7. SNACKS & PASTA
-    if (cat === "snacks & pasta") {
-      if (itemName.includes("fries")) return "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("garlic")) return "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("popcorn") || itemName.includes("balls")) return "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("pasta")) {
-        if (itemName.includes("red")) return "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80";
-        return "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80";
-      }
-      return "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80";
-    }
-
-    // 8. DRINKS & DESSERTS
-    if (cat === "drinks & desserts") {
-      if (itemName.includes("shake")) return "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("mojito") || itemName.includes("blue") || itemName.includes("mint") || itemName.includes("strawberry") || itemName.includes("virgin")) {
-        return "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80";
-      }
-      if (itemName.includes("coffee") || itemName.includes("latte") || itemName.includes("cappuccino") || itemName.includes("dalgona")) {
-        if (itemName.includes("cold") || itemName.includes("iced") || itemName.includes("dalgona")) {
-          return "https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=600&q=80";
-        }
-        return "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80";
-      }
-      if (itemName.includes("ice cream")) return "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("brownie") || itemName.includes("lava cake")) return "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("donut")) return "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80";
-      if (itemName.includes("water")) return "https://images.unsplash.com/photo-1608885898957-a599fb1863fc?auto=format&fit=crop&w=600&q=80";
-      return "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80";
-    }
-
-    // 9. ADD-ONS / FALLBACKS
-    if (cat === "add-ons") {
-      return "https://images.unsplash.com/photo-1594009242813-bfa45914543d?auto=format&fit=crop&w=600&q=80";
-    }
-
-    return imagePath;
+    // Feedback animation
+    setAddedIds((prev) => ({ ...prev, [item.id]: true }));
+    setTimeout(() => {
+      setAddedIds((prev) => ({ ...prev, [item.id]: false }));
+    }, 1200);
   };
 
   return (
-    <section className={`py-20 relative overflow-hidden ${isHomePage ? 'bg-[#0E0000]' : 'bg-transparent'}`}>
-      {/* Tagline Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-[0.02] flex items-center justify-center overflow-hidden z-0">
-        <span className="font-bebas text-[30vw] whitespace-nowrap rotate-[-15deg] select-none">
-          SIZZLE SLICE SMILE
+    <section className={`py-16 md:py-24 relative overflow-hidden ${isHomePage ? 'bg-[#0E0000]' : 'bg-transparent'}`}>
+      {/* Background Watermark */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-[0.015] flex items-center justify-center overflow-hidden z-0 select-none">
+        <span className="font-bebas text-[35vw] whitespace-nowrap rotate-[-12deg] tracking-widest text-[#F8D794]">
+          SNP MENU
         </span>
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#9C0512]/10 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#F8D794]/5 rounded-full blur-[120px] -z-10" />
+      {/* Ambient Lighting Glows */}
+      <div className="absolute top-10 left-1/3 w-[500px] h-[500px] bg-[#9C0512]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/3 w-[500px] h-[500px] bg-[#F8D794]/5 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Sticky Mobile CTA is handled by CartDrawer's floating button */}
-
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16 px-4">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center mb-12">
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-4"
+            className="mb-3"
           >
-            <span className="font-bebas text-[#9C0512] text-sm md:text-base tracking-[0.5em] uppercase font-bold">
+            <span className="font-bebas text-[#9C0512] text-xs md:text-sm tracking-[0.4em] uppercase font-bold bg-[#9C0512]/10 border border-[#9C0512]/20 px-4 py-1.5 rounded-full">
               SIZZLE <span className="text-[#F8D794]">•</span> SLICE <span className="text-[#F8D794]">•</span> SMILE
             </span>
           </motion.div>
 
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display font-black italic text-[#EFEACD] text-5xl md:text-8xl uppercase mb-6 relative inline-block"
-            style={{ 
-              textShadow: '2px 2px 0px rgba(156, 5, 18, 0.3), 4px 4px 0px rgba(0,0,0,0.5)',
-              letterSpacing: '-0.02em'
-            }}
+            className="font-heading italic font-bold text-[#EFEACD] text-4xl md:text-6xl lg:text-7xl uppercase mb-4"
           >
-            {isHomePage ? 'Fresh From Our Kitchen' : 'Our Full Menu'}
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-[#9C0512] to-transparent" />
+            {isHomePage ? 'Our Culinary Menu' : 'Complete Cafe Menu'}
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[#F8D794] font-medium tracking-[0.2em] uppercase text-xs md:text-sm max-w-2xl mx-auto opacity-80"
+            className="text-[#F8D794]/70 font-body text-sm md:text-base max-w-xl mx-auto leading-relaxed"
           >
-            {isHomePage ? 'Explore our most popular categories curated for your cravings' : 'Every dish is a masterpiece, crafted with passion and served with love'}
+            {isHomePage ? 'Explore our handcrafted sizzlers, pizzas, burgers & drinks' : 'Carefully curated recipes made fresh with premium ingredients'}
           </motion.p>
         </div>
 
-        {/* Instant Search Filter */}
-        <div className="max-w-md mx-auto mb-10 px-4">
-          <div className="relative">
+        {/* Search & Dietary Controls Container */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 bg-[#160808]/80 backdrop-blur-md p-4 rounded-2xl border border-[#F8D794]/15 shadow-xl">
+          {/* Instant Search Bar */}
+          <div className="relative w-full md:w-72">
             <input
               type="text"
-              placeholder="Search dishes (e.g. pizza, burger, momos)..."
+              placeholder="Search menu items..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#1A0A0B]/60 border border-[#F8D794]/20 hover:border-[#F8D794]/40 focus:border-[#9C0512] rounded-2xl px-5 py-4 pl-12 font-body text-[#EFEACD] focus:outline-none transition-all placeholder:text-[#F8D794]/40 text-sm shadow-[inset_2px_2px_4px_rgba(0,0,0,0.5)] focus:shadow-[0_0_15px_rgba(156,5,18,0.25)]"
+              className="w-full bg-[#0E0000] border border-[#F8D794]/20 focus:border-[#9C0512] rounded-xl px-4 py-2.5 pl-10 font-body text-[#EFEACD] text-xs md:text-sm focus:outline-none transition-all placeholder:text-[#F8D794]/40"
             />
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#F8D794]/50" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F8D794]/50" />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#F8D794]/50 hover:text-white transition-colors cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#F8D794]/50 hover:text-white"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
             )}
           </div>
-        </div>
 
-        {/* Categories - Scrollable Slider */}
-        <div className="relative mb-14 -mx-4">
-          <div className="flex overflow-x-auto gap-3 py-4 px-4 scroll-smooth no-scrollbar justify-start md:justify-center">
-            {menuCategories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category.trim().toLowerCase())}
-                className={`flex-shrink-0 px-8 py-3 rounded-xl font-bebas text-lg tracking-[0.1em] transition-all duration-300 border ${
-                  activeCategory === category.trim().toLowerCase()
-                    ? 'bg-[#9C0512] text-white border-[#9C0512] shadow-[0_0_20px_rgba(156,5,18,0.4)] scale-105'
-                    : 'bg-[#1A0A0B]/50 text-[#F8D794]/70 border-[#F8D794]/10 hover:border-[#F8D794]/30 hover:text-[#F8D794]'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Dietary Pref Toggle */}
-        <div className="flex justify-center mb-12 px-4">
-          <div className="bg-[#1A0A0B]/80 border border-[#F8D794]/10 p-1 rounded-xl md:rounded-2xl flex gap-1 md:gap-2 backdrop-blur-md shadow-xl overflow-x-auto no-scrollbar max-w-full">
+          {/* Dietary Filter (All / Veg / Non-Veg) */}
+          <div className="flex items-center gap-1.5 bg-[#0E0000] p-1 rounded-xl border border-[#F8D794]/10 w-full md:w-auto justify-center">
             {[
-              { id: 'all', label: 'All Dishes', icon: null },
-              { id: 'veg', label: 'Pure Veg', icon: <Leaf className="w-4 h-4 text-green-500" fill="currentColor" /> },
-              { id: 'non-veg', label: 'Non-Veg', icon: <div className="w-2.5 h-2.5 rounded-full bg-[#9C0512]" /> }
+              { id: 'all', label: 'All Items' },
+              { id: 'veg', label: 'Veg Only', isVeg: true },
+              { id: 'non-veg', label: 'Non-Veg', isVeg: false }
             ].map((pref) => (
               <button
                 key={pref.id}
                 onClick={() => setDietaryPreference(pref.id as any)}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bebas text-sm md:text-base tracking-widest transition-all duration-300 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bebas text-xs md:text-sm tracking-wider transition-all duration-300 ${
                   dietaryPreference === pref.id
-                    ? 'bg-[#EFEACD] text-[#0E0000] shadow-inner font-bold'
+                    ? 'bg-[#9C0512] text-white shadow-md font-bold'
                     : 'text-[#F8D794]/60 hover:text-[#F8D794]'
                 }`}
               >
-                {pref.icon}
+                {pref.id === 'veg' && (
+                  <span className="w-2.5 h-2.5 rounded-sm border border-emerald-500 p-0.5 flex items-center justify-center">
+                    <span className="w-full h-full rounded-full bg-emerald-500" />
+                  </span>
+                )}
+                {pref.id === 'non-veg' && (
+                  <span className="w-2.5 h-2.5 rounded-sm border border-red-500 p-0.5 flex items-center justify-center">
+                    <span className="w-full h-full rounded-full bg-red-500" />
+                  </span>
+                )}
                 {pref.label}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Items Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 min-h-[400px]">
-          <AnimatePresence mode="wait">
-            {filteredItems.map((item) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                className="group relative bg-[#1A0A0B] rounded-3xl overflow-hidden border border-[#F8D794]/10 hover:border-[#F8D794]/30 transition-all duration-500 shadow-[8px_8px_16px_rgba(0,0,0,0.5),_inset_-4px_-4px_8px_rgba(248,215,148,0.05),_inset_4px_4px_8px_rgba(0,0,0,0.8)]"
-              >
-                <div className="aspect-[4/3] overflow-hidden relative">
-                  <motion.img
-                    src={getPremiumImage(item.image, item.name, item.category)}
-                    alt={item.name}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-all duration-700 ease-out"
-                    animate={{ 
-                      y: [0, -5, 0],
-                      scale: [1, 1.02, 1],
-                    }}
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotate: [0, -2, 2, -2, 0],
-                      transition: { duration: 0.3 }
-                    }}
-                    transition={{ 
-                      duration: 4, 
-                      repeat: Infinity, 
-                      ease: "easeInOut" 
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-transparent to-transparent opacity-80" />
-                  
-                  {item.category === 'Sizzlers' && (
-                    <div className="absolute top-4 left-4 bg-gradient-to-r from-[#9C0512] to-[#64090C] text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 uppercase tracking-wider z-10 shadow-lg">
-                      <Flame className="w-3 h-3 animate-pulse" /> Signature
-                    </div>
-                  )}
-                  
-                  {item.isVeg && (
-                    <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-1.5 rounded-full border border-white/20 z-10">
-                      <Leaf className="w-4 h-4 text-green-500" fill="currentColor" />
-                    </div>
-                  )}
-                </div>
-
-                <div className="p-6 md:p-8">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="font-display font-black italic text-[#EFEACD] text-2xl leading-tight group-hover:text-[#F8D794] transition-colors">
-                      {item.name}
-                    </h3>
-                    <div className="flex flex-col items-end">
-                      <span className="font-bebas text-[#F8D794] text-2xl tracking-tighter">₹{item.price}</span>
-                      <span className="text-[10px] text-[#F8D794]/40 uppercase tracking-widest">+ Taxes</span>
-                    </div>
-                  </div>
-                  
-                  <p className="text-[#F8D794]/60 text-sm mb-6 line-clamp-2 font-body leading-relaxed group-hover:text-[#F8D794]/80 transition-colors">
-                    {item.description}
-                  </p>
-
-                  <div className="flex items-center gap-3">
-                    <button 
-                      onClick={() => handleAddToCart(item)}
-                      className="flex-1 bg-[#9C0512] hover:bg-[#B70615] text-white font-bebas text-lg tracking-[0.2em] py-3 rounded-xl transition-all active:scale-95 group/btn relative overflow-hidden shadow-[4px_4px_8px_rgba(0,0,0,0.5),_inset_-2px_-2px_4px_rgba(255,255,255,0.1),_inset_2px_2px_4px_rgba(0,0,0,0.4)] cursor-pointer"
-                    >
-                      <span className="relative z-10 flex items-center justify-center gap-2"><ShoppingCart className="w-4 h-4" /> Add to Cart</span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000 ease-in-out" />
-                    </button>
-                    <button className="w-12 h-12 flex items-center justify-center rounded-xl border border-[#F8D794]/10 text-[#F8D794]/50 hover:text-[#F8D794] hover:bg-[#F8D794]/5 transition-all shadow-[inset_2px_2px_4px_rgba(0,0,0,0.5)]">
-                      <Info className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+        {/* Category Navigation Bar (Book Tabs) */}
+        <div className="mb-10 overflow-x-auto no-scrollbar py-2 -mx-4 px-4">
+          <div className="flex gap-2.5 min-w-max justify-start md:justify-center">
+            {menuCategories.map((category) => {
+              const isActive = activeCategory === category.trim().toLowerCase();
+              return (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category.trim().toLowerCase())}
+                  className={`px-5 py-2.5 rounded-xl font-bebas text-base tracking-wider transition-all duration-300 border ${
+                    isActive
+                      ? 'bg-[#F8D794] text-[#0E0000] border-[#F8D794] font-bold shadow-[0_0_20px_rgba(248,215,148,0.3)] scale-105'
+                      : 'bg-[#160808]/60 text-[#EFEACD]/70 border-[#F8D794]/10 hover:border-[#F8D794]/30 hover:text-[#F8D794]'
+                  }`}
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
+        {/* Editorial Dining Book Page Layout (2 Columns on Desktop) */}
+        <div className="bg-[#140707] border border-[#F8D794]/20 rounded-3xl p-6 md:p-10 shadow-2xl relative">
+          
+          {/* Category Title Banner */}
+          <div className="flex items-center justify-between border-b border-[#F8D794]/20 pb-4 mb-8">
+            <h3 className="font-bebas text-2xl md:text-4xl text-[#F8D794] tracking-widest uppercase flex items-center gap-3">
+              <Sparkles className="w-5 h-5 text-[#9C0512]" />
+              {menuCategories.find(c => c.trim().toLowerCase() === activeCategory) || activeCategory}
+            </h3>
+            <span className="font-body text-xs text-[#EFEACD]/50 uppercase tracking-widest">
+              {filteredItems.length} {filteredItems.length === 1 ? 'Item' : 'Items'}
+            </span>
+          </div>
+
+          {/* Book Items List (2 Columns on Desktop) */}
+          {filteredItems.length > 0 ? (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
+              <AnimatePresence mode="popLayout">
+                {filteredItems.map((item) => {
+                  const isAdded = addedIds[item.id];
+                  return (
+                    <motion.div
+                      key={item.id}
+                      layout
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.25 }}
+                      className="group flex flex-col justify-between p-4 rounded-2xl bg-[#0E0000]/40 border border-[#F8D794]/5 hover:border-[#F8D794]/25 transition-all duration-300 hover:bg-[#1A0A0B]/80"
+                    >
+                      <div>
+                        {/* Title Row with Leader Dots & Price */}
+                        <div className="flex items-baseline justify-between gap-3 mb-1.5">
+                          
+                          {/* Veg/Non-Veg Icon + Name */}
+                          <div className="flex items-center gap-2.5 flex-1 min-w-0">
+                            {/* Veg / Non-Veg Official Indicator Dot */}
+                            {item.isVeg ? (
+                              <span className="w-4 h-4 rounded-sm border border-emerald-500 p-0.5 flex items-center justify-center flex-shrink-0" title="Pure Veg">
+                                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                              </span>
+                            ) : (
+                              <span className="w-4 h-4 rounded-sm border border-red-500 p-0.5 flex items-center justify-center flex-shrink-0" title="Non-Veg">
+                                <span className="w-2 h-2 rounded-full bg-red-500" />
+                              </span>
+                            )}
+
+                            <span className="font-heading italic font-bold text-lg md:text-xl text-[#EFEACD] group-hover:text-[#F8D794] transition-colors truncate">
+                              {item.name}
+                            </span>
+                          </div>
+
+                          {/* Leader Dotted Line */}
+                          <div className="flex-1 border-b border-dotted border-[#F8D794]/20 hidden sm:block mx-1" />
+
+                          {/* Price Tag */}
+                          <div className="flex items-baseline gap-1 flex-shrink-0">
+                            <span className="font-bebas text-xl md:text-2xl text-[#F8D794] tracking-tight">
+                              ₹{item.price}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Description */}
+                        <p className="font-body text-xs md:text-sm text-[#EFEACD]/60 leading-relaxed mb-4 pl-6">
+                          {item.description}
+                        </p>
+                      </div>
+
+                      {/* Bottom Bar: Quick Add Button */}
+                      <div className="flex justify-end pt-2 border-t border-[#F8D794]/10">
+                        <button
+                          onClick={() => handleAddToCart(item)}
+                          className={`flex items-center gap-2 px-4 py-1.5 rounded-xl font-bebas text-sm tracking-wider transition-all duration-300 cursor-pointer ${
+                            isAdded
+                              ? 'bg-emerald-600 text-white shadow-lg scale-105'
+                              : 'bg-[#9C0512] hover:bg-[#C00A1A] text-white shadow-md hover:shadow-[0_0_15px_rgba(156,5,18,0.4)] active:scale-95'
+                          }`}
+                        >
+                          {isAdded ? (
+                            <>
+                              <Check className="w-3.5 h-3.5" />
+                              Added!
+                            </>
+                          ) : (
+                            <>
+                              <Plus className="w-3.5 h-3.5" />
+                              ADD TO CART
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <p className="text-[#F8D794]/50 font-bebas text-xl tracking-widest">
+                No items found in this category matching your search/filters.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Home Page "View Full Menu" Link */}
         {isHomePage && (
-          <div className="mt-16 text-center">
+          <div className="mt-12 text-center">
             <Link 
               to="/menu"
-              className="inline-flex items-center gap-2 text-[#F8D794] font-display font-bold text-2xl uppercase tracking-widest hover:text-[#EFEACD] transition-colors group"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#9C0512] to-[#B70615] text-[#EFEACD] font-bebas text-xl tracking-[0.2em] px-8 py-3.5 rounded-full border border-[#F8D794]/30 hover:border-[#F8D794] shadow-lg hover:shadow-[0_0_25px_rgba(248,215,148,0.4)] transition-all hover:scale-105"
             >
-              View Full Menu 
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+              <span>Explore Complete Menu</span>
+              <ShoppingCart className="w-5 h-5 text-[#F8D794]" />
             </Link>
-          </div>
-        )}
-
-        {filteredItems.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-[#F8D794]/40 font-bebas text-2xl tracking-widest">
-              Coming Soon to this {dietaryPreference !== 'all' ? dietaryPreference : ''} category!
-            </p>
           </div>
         )}
       </div>
