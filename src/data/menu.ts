@@ -13,12 +13,12 @@ export const menuCategories = [
 export const menuItems = [
   // CATEGORY: Pizzas
   // VEG PIZZAS
-  { id: 1, name: "Margherita Pizza", category: "Pizza's", price: "79 / 149", isVeg: true, image: "/assets/images/doodle_pizza_80s_1781557627365.jpg", description: "Classic cheese and tomato sauce base." },
-  { id: 2, name: "OTC Pizza", category: "Pizza's", price: "99 / 189", isVeg: true, image: "/assets/images/doodle_pizza_80s_1781557627365.jpg", description: "Topped with Onion, Tomato, and Capsicum." },
-  { id: 3, name: "Golden Corn Pizza", category: "Pizza's", price: "109 / 199", isVeg: true, image: "/assets/images/doodle_pizza_80s_1781557627365.jpg", description: "Topped with sweet corn." },
-  { id: 330, name: "Mexican Veg Pizza", category: "Pizza's", price: "119 / 209", isVeg: true, image: "/assets/images/doodle_pizza_80s_1781557627365.jpg", description: "Features Mexican-inspired toppings." },
-  { id: 4, name: "Spicy Paneer Pizza", category: "Pizza's", price: "129 / 219", isVeg: true, image: "/assets/images/doodle_pizza_80s_1781557627365.jpg", description: "Paneer, onion, tomato, capsicum, green chilli." },
-  { id: 30, name: "Tandoori Paneer Pizza", category: "Pizza's", price: "139 / 239", isVeg: true, image: "/assets/images/doodle_pizza_80s_1781557627365.jpg", description: "Tandoori paneer, onion, tomato, capsicum." },
+  { id: 1, name: "Margherita Pizza", category: "Pizza's", price: "79 / 149", isVeg: true, image: "/assets/images/pizza_margherita.jpg", description: "Classic cheese and tomato sauce base." },
+  { id: 2, name: "OTC Pizza", category: "Pizza's", price: "99 / 189", isVeg: true, image: "/assets/images/pizza_otc.jpg", description: "Topped with Onion, Tomato, and Capsicum." },
+  { id: 3, name: "Golden Corn Pizza", category: "Pizza's", price: "109 / 199", isVeg: true, image: "/assets/images/pizza_golden_corn.jpg", description: "Topped with sweet corn." },
+  { id: 330, name: "Mexican Veg Pizza", category: "Pizza's", price: "119 / 209", isVeg: true, image: "/assets/images/pizza_mexican_veg.jpg", description: "Features Mexican-inspired toppings." },
+  { id: 4, name: "Spicy Paneer Pizza", category: "Pizza's", price: "129 / 219", isVeg: true, image: "/assets/images/pizza_spicy_paneer.jpg", description: "Paneer, onion, tomato, capsicum, green chilli." },
+  { id: 30, name: "Tandoori Paneer Pizza", category: "Pizza's", price: "139 / 239", isVeg: true, image: "/assets/images/pizza_tandoori_paneer.jpg", description: "Tandoori paneer, onion, tomato, capsicum." },
   { id: 331, name: "Tandoori Baby Corn Pizza", category: "Pizza's", price: "139 / 239", isVeg: true, image: "/assets/images/doodle_pizza_80s_1781557627365.jpg", description: "Tandoori baby corn, onion, tomato, capsicum." },
   { id: 332, name: "White Sauce Veg Pizza", category: "Pizza's", price: "149 / 259", isVeg: true, image: "/assets/images/doodle_pizza_80s_1781557627365.jpg", description: "White sauce, onion, tomato, capsicum, corn, mushroom." },
   { id: 333, name: "Veggie Farmhouse Pizza", category: "Pizza's", price: "169 / 299", isVeg: true, image: "/assets/images/doodle_pizza_80s_1781557627365.jpg", description: "Onion, tomato, capsicum, corn, mushroom, black olive." },
@@ -39,27 +39,27 @@ export const menuItems = [
   { id: 342, name: "Chicken Cheese Volcano Pizza", category: "Pizza's", price: "319", isVeg: false, image: "/assets/images/doodle_pizza_80s_1781557627365.jpg", description: "9-inch only: Cheese centre, chicken, corn, black olive, onion, tomato, capsicum." },
 
   // CATEGORY: Burgers
-  { id: 7, name: "Aloo Tikki Burger", category: "Burgers", price: "79", isVeg: true, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "The classic comforting potato patty burger." },
-  { id: 60, name: "Crispy Veg Burger", category: "Burgers", price: "99", isVeg: true, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Perfectly spiced veg patty with crunch in every bite." },
+  { id: 7, name: "Aloo Tikki Burger", category: "Burgers", price: "79", isVeg: true, image: "/assets/images/burger_aloo_tikki.jpg", description: "The classic comforting potato patty burger." },
+  { id: 60, name: "Crispy Veg Burger", category: "Burgers", price: "99", isVeg: true, image: "/assets/images/burger_crispy_veg.jpg", description: "Perfectly spiced veg patty with crunch in every bite." },
   { id: 61, name: "Hot & Chilli Veg Burger", category: "Burgers", price: "109", isVeg: true, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "A fiery delight for the spice lovers!" },
   { id: 62, name: "Double Aloo Tikki Burger", category: "Burgers", price: "119", isVeg: true, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Twice the comfort with two classic potato patties." },
   { id: 63, name: "Crispy Corn Burger", category: "Burgers", price: "119", isVeg: true, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Golden corn and veg patty with secret sauces." },
-  { id: 8, name: "Crispy Paneer Burger", category: "Burgers", price: "139", isVeg: true, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Hand-breaded paneer patty with zesty dressing." },
-  { id: 33, name: "Veg Double Patty Burger", category: "Burgers", price: "149", isVeg: true, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Two crispy veg patties with cheese and special sauce." },
-  { id: 64, name: "Peri Peri Veg Burger", category: "Burgers", price: "149", isVeg: true, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Zesty Peri Peri flavor with a crunchy veg patty." },
-  { id: 34, name: "Paneer Tikka Burger", category: "Burgers", price: "159", isVeg: true, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Marinated paneer steak grilled to perfection." },
-  { id: 65, name: "Triple Veg Loaded Burger", category: "Burgers", price: "169", isVeg: true, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "The ultimate veg feast with triple patties and extra toppings." },
+  { id: 8, name: "Crispy Paneer Burger", category: "Burgers", price: "139", isVeg: true, image: "/assets/images/burger_crispy_paneer.jpg", description: "Hand-breaded paneer patty with zesty dressing." },
+  { id: 33, name: "Veg Double Patty Burger", category: "Burgers", price: "149", isVeg: true, image: "/assets/images/burger_veg_double_patty.jpg", description: "Two crispy veg patties with cheese and special sauce." },
+  { id: 64, name: "Peri Peri Veg Burger", category: "Burgers", price: "149", isVeg: true, image: "/assets/images/burger_peri_peri.jpg", description: "Zesty Peri Peri flavor with a crunchy veg patty." },
+  { id: 34, name: "Paneer Tikka Burger", category: "Burgers", price: "159", isVeg: true, image: "/assets/images/burger_paneer_tikka.jpg", description: "Marinated paneer steak grilled to perfection." },
+  { id: 65, name: "Triple Veg Loaded Burger", category: "Burgers", price: "169", isVeg: true, image: "/assets/images/burger_triple_veg_loaded.jpg", description: "The ultimate veg feast with triple patties and extra toppings." },
   
   // NON-VEG BURGERS
-  { id: 9, name: "Crispy Chicken Burger", category: "Burgers", price: "119", isVeg: false, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Juicy fried chicken patty with fresh lettuce and mayo." },
-  { id: 66, name: "Crispy Chicken Surprise Burger", category: "Burgers", price: "129", isVeg: false, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Classic crispy chicken with a delicious surprise sauce." },
-  { id: 67, name: "Hot & Chilli Chicken Burger", category: "Burgers", price: "139", isVeg: false, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Standard choice for spice seekers. Zesty and hot!" },
-  { id: 68, name: "Crispy Corn & Chicken Burger", category: "Burgers", price: "149", isVeg: false, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "The perfect crunch combo of chicken and sweet corn." },
-  { id: 69, name: "Peri Peri Chicken Burger", category: "Burgers", price: "159", isVeg: false, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Flame-grilled taste with our signature Peri Peri kick." },
-  { id: 70, name: "Premium Fried Chicken Burger", category: "Burgers", price: "169", isVeg: false, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Our elite tier fried chicken, hand-breaded and golden." },
-  { id: 35, name: "Tandoori Chicken Burger", category: "Burgers", price: "169", isVeg: false, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Smoky tandoori chicken patty with mint mayo." },
-  { id: 71, name: "Chicken Double Patty Burger", category: "Burgers", price: "179", isVeg: false, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "Two juicy chicken patties for the ultimate appetite." },
-  { id: 72, name: "Chicken Volcano Burger", category: "Burgers", price: "179", isVeg: false, image: "/assets/images/doodle_burger_80s_1781557643419.jpg", description: "An explosion of spicy melted cheese and spicy chicken." },
+  { id: 9, name: "Crispy Chicken Burger", category: "Burgers", price: "119", isVeg: false, image: "/assets/images/burger_crispy_chicken.jpg", description: "Golden crispy chicken patty with fresh greens and sauces." },
+  { id: 66, name: "Crispy Chicken Surprise Burger", category: "Burgers", price: "129", isVeg: false, image: "/assets/images/burger_crispy_chicken_surprise.jpg", description: "A surprise filling in every crispy chicken bite." },
+  { id: 67, name: "Hot & Chilli Chicken Burger", category: "Burgers", price: "139", isVeg: false, image: "/assets/images/burger_hot_chilli_chicken.jpg", description: "Fiery chicken patty loaded with green chillies and spices." },
+  { id: 68, name: "Crispy Corn & Chicken Burger", category: "Burgers", price: "149", isVeg: false, image: "/assets/images/burger_crispy_corn_chicken.jpg", description: "The perfect crunch combo of chicken and sweet corn." },
+  { id: 69, name: "Peri Peri Chicken Burger", category: "Burgers", price: "159", isVeg: false, image: "/assets/images/burger_peri_peri_chicken.jpg", description: "Flame-grilled taste with our signature Peri Peri kick." },
+  { id: 70, name: "Premium Fried Chicken Burger", category: "Burgers", price: "169", isVeg: false, image: "/assets/images/burger_premium_fried_chicken.jpg", description: "Our elite tier fried chicken, hand-breaded and golden." },
+  { id: 35, name: "Tandoori Chicken Burger", category: "Burgers", price: "169", isVeg: false, image: "/assets/images/burger_tandoori_chicken.jpg", description: "Smoky tandoori chicken patty with mint mayo." },
+  { id: 71, name: "Chicken Double Patty Burger", category: "Burgers", price: "179", isVeg: false, image: "/assets/images/burger_chicken_double_patty.jpg", description: "Two juicy chicken patties for the ultimate appetite." },
+  { id: 72, name: "Chicken Volcano Burger", category: "Burgers", price: "179", isVeg: false, image: "/assets/images/burger_chicken_volcano.jpg", description: "An explosion of spicy melted cheese and spicy chicken." },
   
   // CATEGORY: Sandwiches
   // VEG SANDWICHES
