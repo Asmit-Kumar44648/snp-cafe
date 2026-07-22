@@ -22,7 +22,7 @@ export interface CtaCard {
 
 export const ctaCards: CtaCard[] = [
   {
-    afterIndex: 2,
+    afterIndex: 3,
     eyebrow: "Hungry Now",
     heading: "Order via Swiggy/Zomato",
     description: "Craving SNP? Get your favorites delivered piping hot to your doorstep.",
@@ -31,13 +31,13 @@ export const ctaCards: CtaCard[] = [
     bgImage: "/assets/images/snp_gallery_pizza_box.jpg"
   },
   {
-    afterIndex: 4,
+    afterIndex: 7,
     eyebrow: "Celebrations",
     heading: "Book Your Party at SNP",
     description: "Birthdays, anniversaries, or group meetups. Make it memorable at Sizzler 'n' Pizza Cafe.",
     ctaLabel: "Reserve Space",
     ctaLink: "/franchise#contact-section",
-    bgImage: "/assets/images/snp_gallery_main_hall.jpg"
+    bgImage: "/assets/images/snp_gallery_cake_celebration.png"
   }
 ];
 
@@ -52,26 +52,61 @@ export const galleryItems: GalleryItem[] = [
   { 
     id: '2', 
     type: 'image', 
+    src: '/assets/images/snp_hero_exterior.jpg', 
+    aspect: 'landscape', 
+    alt: 'Sizzler n Pizza Cafe Exterior Building & Glass Front' 
+  },
+  { 
+    id: '3', 
+    type: 'image', 
     src: '/assets/images/snp_gallery_neon_sign.png', 
     aspect: 'portrait', 
     alt: 'Glow Neon SNP CAFE Sign & Hanging Rope Lights' 
   },
   { 
-    id: '3', 
+    id: '4', 
+    type: 'image', 
+    src: '/assets/images/snp_gallery_blue_mocktail.png', 
+    aspect: 'portrait', 
+    alt: 'Chilled Blue Mocktail at SNP Cafe' 
+  },
+  { 
+    id: '5', 
+    type: 'image', 
+    src: '/assets/images/snp_gallery_cake_celebration.png', 
+    aspect: 'portrait', 
+    alt: 'Birthday Cake & Cold Drink Party Setup' 
+  },
+  { 
+    id: '6', 
+    type: 'image', 
+    src: '/assets/images/snp_gallery_pizza_combo.jpg', 
+    aspect: 'portrait', 
+    alt: 'Fresh Paneer Pizza & Fried Chicken Meal' 
+  },
+  { 
+    id: '7', 
+    type: 'image', 
+    src: '/assets/images/snp_gallery_fried_chicken_platter.png', 
+    aspect: 'portrait', 
+    alt: 'Golden Crispy Fried Chicken Bucket Platter' 
+  },
+  { 
+    id: '8', 
     type: 'image', 
     src: '/assets/images/snp_gallery_pizza_box.jpg', 
     aspect: 'landscape', 
-    alt: 'Signature Sizzler n Pizza Cafe Branded Pizza Box' 
+    alt: 'Signature Sizzler n Pizza Cafe Branded Box' 
   },
   { 
-    id: '4', 
+    id: '9', 
     type: 'image', 
     src: '/assets/images/snp_gallery_pillar_hallway.jpg', 
     aspect: 'portrait', 
     alt: 'Red Pillar Dining Hallway & Counter' 
   },
   { 
-    id: '5', 
+    id: '10', 
     type: 'image', 
     src: '/assets/images/snp_gallery_main_hall.jpg', 
     aspect: 'landscape', 

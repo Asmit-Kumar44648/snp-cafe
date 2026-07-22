@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import { galleryItems } from '../../data/gallery';
 
 export default function GalleryPreview() {
+  // Use real gallery photos from dataset
   const item1 = galleryItems[0]; // dining wall (landscape)
-  const item2 = galleryItems[1]; // neon sign (portrait)
-  const item3 = galleryItems[2]; // pizza box (landscape)
-  const item4 = galleryItems[3]; // pillar hallway (portrait)
-  const item5 = galleryItems[4]; // main hall (landscape)
+  const item2 = galleryItems[1]; // building exterior (landscape - 2nd image)
+  const item3 = galleryItems[2]; // neon sign (portrait)
+  const item4 = galleryItems[3]; // blue mocktail (portrait)
+  const item5 = galleryItems[4]; // cake celebration (portrait)
+  const item6 = galleryItems[5]; // pizza combo (portrait)
+  const item7 = galleryItems[6]; // fried chicken platter (portrait)
+  const item8 = galleryItems[7]; // pizza box (landscape)
 
   return (
     <section id="events" className="py-20 lg:py-28 bg-[#0E0000] relative overflow-hidden">
@@ -21,7 +25,7 @@ export default function GalleryPreview() {
           <div className="flex items-center gap-3 mb-4 select-none">
             <span className="font-body bg-[#9C0512] text-[#EFEACD] font-bold tracking-[0.25em] uppercase text-xs md:text-sm px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(156,5,18,0.5)] flex items-center gap-2">
               <ImageIcon className="w-3.5 h-3.5" />
-              OUR CAFE ATMOSPHERE
+              REAL CAFE ATMOSPHERE
             </span>
             <span className="font-bebas text-[#F8D794] text-sm md:text-base tracking-[0.2em] uppercase">
               SIZZLE • SLICE • SMILE
@@ -33,111 +37,162 @@ export default function GalleryPreview() {
           </h2>
 
           <p className="font-body text-[#EFEACD]/80 max-w-2xl text-base md:text-lg leading-relaxed">
-            Step inside Sizzler 'n' Pizza Cafe. Experience our cozy dining areas, glowing neon vibes, and signature packaging.
+            Step inside Sizzler 'n' Pizza Cafe. Experience our vibrant dining spaces, delicious food platters, and cheerful celebration moments.
           </p>
         </div>
 
-        {/* 5 Real Photos Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mb-16">
+        {/* Real SNP Cafe Gallery Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 mb-16">
           
-          {/* Column 1: 2 Landscape Cards */}
-          <div className="flex flex-col gap-5 lg:gap-6">
-            {/* Landscape 1 */}
-            <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[240px] md:h-[270px]">
-              <img
-                src={item1.src}
-                alt={item1.alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
-                  Dining Area
-                </span>
-                <h3 className="font-heading italic font-bold text-lg text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
-                  {item1.alt}
-                </h3>
-              </div>
-            </div>
-
-            {/* Landscape 2 */}
-            <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[240px] md:h-[270px]">
-              <img
-                src={item3.src}
-                alt={item3.alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
-                  Signature Packaging
-                </span>
-                <h3 className="font-heading italic font-bold text-lg text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
-                  {item3.alt}
-                </h3>
-              </div>
+          {/* Card 1: Dining Wall (Landscape) */}
+          <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[260px] md:h-[280px]">
+            <img
+              src={item1.src}
+              alt={item1.alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
+                Dining Area
+              </span>
+              <h3 className="font-heading italic font-bold text-base text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
+                {item1.alt}
+              </h3>
             </div>
           </div>
 
-          {/* Column 2: 1 Portrait Center Piece (Neon Sign) */}
-          <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/30 hover:border-[#F8D794]/70 transition-all duration-500 shadow-2xl shadow-[#9C0512]/10 h-[380px] md:h-[564px]">
+          {/* Card 2: Building Exterior (2nd Image as Requested) */}
+          <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/30 hover:border-[#F8D794]/70 transition-all duration-500 shadow-xl h-[260px] md:h-[280px]">
             <img
               src={item2.src}
               alt={item2.alt}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-              <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded bg-[#F8D794] text-[#0E0000] mb-2.5 inline-block font-bebas">
-                Neon Vibe
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#F8D794] text-[#0E0000] mb-2 inline-block font-bebas">
+                Building Front
               </span>
-              <h3 className="font-heading italic font-bold text-2xl text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
+              <h3 className="font-heading italic font-bold text-base text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
                 {item2.alt}
               </h3>
             </div>
           </div>
 
-          {/* Column 3: 2 Real Cafe Photos */}
-          <div className="flex flex-col gap-5 lg:gap-6">
-            {/* Main Hall */}
-            <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[240px] md:h-[270px]">
-              <img
-                src={item5.src}
-                alt={item5.alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
-                  Main Hall
-                </span>
-                <h3 className="font-heading italic font-bold text-lg text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
-                  {item5.alt}
-                </h3>
-              </div>
+          {/* Card 3: Chilled Blue Mocktail */}
+          <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[260px] md:h-[280px]">
+            <img
+              src={item4.src}
+              alt={item4.alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
+                Refreshments
+              </span>
+              <h3 className="font-heading italic font-bold text-base text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
+                {item4.alt}
+              </h3>
             </div>
+          </div>
 
-            {/* Pillar Hallway */}
-            <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[240px] md:h-[270px]">
-              <img
-                src={item4.src}
-                alt={item4.alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
-                  Cafe Ambiance
-                </span>
-                <h3 className="font-heading italic font-bold text-lg text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
-                  {item4.alt}
-                </h3>
-              </div>
+          {/* Card 4: Birthday Cake Celebration */}
+          <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[260px] md:h-[280px]">
+            <img
+              src={item5.src}
+              alt={item5.alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
+                Celebrations
+              </span>
+              <h3 className="font-heading italic font-bold text-base text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
+                {item5.alt}
+              </h3>
+            </div>
+          </div>
+
+          {/* Card 5: Fresh Pizza & Chicken Meal */}
+          <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[260px] md:h-[280px]">
+            <img
+              src={item6.src}
+              alt={item6.alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
+                Delicious Meals
+              </span>
+              <h3 className="font-heading italic font-bold text-base text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
+                {item6.alt}
+              </h3>
+            </div>
+          </div>
+
+          {/* Card 6: Crispy Fried Chicken Platter */}
+          <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[260px] md:h-[280px]">
+            <img
+              src={item7.src}
+              alt={item7.alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
+                Fried Chicken
+              </span>
+              <h3 className="font-heading italic font-bold text-base text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
+                {item7.alt}
+              </h3>
+            </div>
+          </div>
+
+          {/* Card 7: Neon SNP Sign */}
+          <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[260px] md:h-[280px]">
+            <img
+              src={item3.src}
+              alt={item3.alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
+                Neon Vibe
+              </span>
+              <h3 className="font-heading italic font-bold text-base text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
+                {item3.alt}
+              </h3>
+            </div>
+          </div>
+
+          {/* Card 8: Signature Packaging Box */}
+          <div className="group relative rounded-2xl overflow-hidden bg-[#1A0909] border border-[#F8D794]/15 hover:border-[#F8D794]/50 transition-all duration-500 shadow-xl h-[260px] md:h-[280px]">
+            <img
+              src={item8.src}
+              alt={item8.alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E0000] via-[#0E0000]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-[#9C0512] text-[#EFEACD] mb-2 inline-block">
+                Branded Packaging
+              </span>
+              <h3 className="font-heading italic font-bold text-base text-[#EFEACD] group-hover:text-[#F8D794] transition-colors">
+                {item8.alt}
+              </h3>
             </div>
           </div>
 
