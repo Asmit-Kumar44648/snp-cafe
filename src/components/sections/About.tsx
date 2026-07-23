@@ -3,6 +3,8 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import experienceBg from '../../assets/images/snp_about_experience.png';
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
@@ -79,8 +81,8 @@ export default function About() {
         <div className="h-[400px] lg:h-full min-h-[500px] w-full rounded-xl overflow-hidden border border-[#9C0512]/20 shadow-[0_0_40px_rgba(156,5,18,0.15)] relative">
           <img 
             ref={(el: HTMLImageElement | null) => { imgRefs.current[0] = el; }}
-            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1000" 
-            alt="Restaurant interior" 
+            src={experienceBg} 
+            alt="SNP Cafe Neon Sign Vibe & Lighting" 
             className="absolute inset-0 w-full h-full object-cover scale-105"
           />
         </div>
