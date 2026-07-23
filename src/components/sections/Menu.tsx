@@ -4,18 +4,26 @@ import { Link } from 'react-router-dom';
 import { menuCategories, menuItems } from '../../data/menu';
 import { Search, X, ShoppingCart, Plus, Check, Sparkles, Flame } from 'lucide-react';
 
-import imgVolcanoBurger  from '../../assets/images/hero_food_chicken_volcano_burger.jpg';
-import imgPremiumChicken from '../../assets/images/hero_food_premium_fried_chicken.jpg';
-import imgSpicyPaneer    from '../../assets/images/hero_food_spicy_paneer_pizza.jpg';
-import imgPaneerTikka    from '../../assets/images/hero_food_paneer_tikka_burger.jpg';
-import imgCrispyChicken  from '../../assets/images/hero_food_crispy_chicken_burger.jpg';
+import imgVolcanoBurger   from '../../assets/images/hero_food_chicken_volcano_burger.jpg';
+import imgPremiumChicken  from '../../assets/images/hero_food_premium_fried_chicken.jpg';
+import imgSpicyPaneer     from '../../assets/images/hero_food_spicy_paneer_pizza.jpg';
+import imgPaneerTikka     from '../../assets/images/hero_food_paneer_tikka_burger.jpg';
+import imgCrispyChicken   from '../../assets/images/hero_food_crispy_chicken_burger.jpg';
+import imgChickenSizzler  from '../../assets/images/hero_food_chicken_sizzler.jpg';
+import imgPaneerSizzler   from '../../assets/images/snp_gallery_fried_chicken_platter.png';
+import imgCoupleCombo     from '../../assets/images/snp_gallery_pizza_combo.jpg';
+import imgSizzlingBrownie from '../../assets/images/snp_gallery_cake_celebration.png';
 
 const TOP_PICKS = [
-  { img: imgVolcanoBurger,  label: 'Chicken Volcano Burger', badge: '🔥 HOT',   price: '₹179', isVeg: false },
-  { img: imgSpicyPaneer,    label: 'Spicy Paneer Pizza',     badge: '⭐ BEST',  price: '₹129', isVeg: true  },
-  { img: imgPremiumChicken, label: 'Premium Fried Chicken',  badge: '👑 PRIME', price: '₹169', isVeg: false },
-  { img: imgPaneerTikka,    label: 'Paneer Tikka Burger',    badge: '💚 VEG',   price: '₹159', isVeg: true  },
-  { img: imgCrispyChicken,  label: 'Crispy Chicken Burger',  badge: '🍗 CRISP', price: '₹119', isVeg: false },
+  { img: imgVolcanoBurger,   label: 'Chicken Volcano Burger',    badge: '🔥 HOT',    price: '₹179', isVeg: false },
+  { img: imgSpicyPaneer,     label: 'Spicy Paneer Pizza',        badge: '⭐ BEST',   price: '₹129', isVeg: true  },
+  { img: imgPremiumChicken,  label: 'Premium Fried Chicken',     badge: '👑 PRIME',  price: '₹169', isVeg: false },
+  { img: imgChickenSizzler,  label: 'Chicken Exotic Sizzler',    badge: '🍳 SIZZLE', price: '₹369', isVeg: false },
+  { img: imgPaneerSizzler,   label: 'Schezwan Paneer Sizzler',   badge: '💚 SIZZLE', price: '₹279', isVeg: true  },
+  { img: imgPaneerTikka,     label: 'Paneer Tikka Burger',       badge: '💚 VEG',    price: '₹159', isVeg: true  },
+  { img: imgCrispyChicken,   label: 'Crispy Chicken Burger',     badge: '🍗 CRISP',  price: '₹119', isVeg: false },
+  { img: imgCoupleCombo,     label: 'Couple Combo Meal',         badge: '❤️ DATE',   price: '₹499', isVeg: true  },
+  { img: imgSizzlingBrownie, label: 'Sizzling Brownie + IceCream', badge: '🍫 WOW',  price: '₹179', isVeg: true  },
 ];
 
 interface MenuProps {
