@@ -2,7 +2,21 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { menuCategories, menuItems } from '../../data/menu';
-import { Search, X, ShoppingCart, Plus, Check, Sparkles } from 'lucide-react';
+import { Search, X, ShoppingCart, Plus, Check, Sparkles, Flame } from 'lucide-react';
+
+import imgVolcanoBurger  from '../../assets/images/hero_food_chicken_volcano_burger.jpg';
+import imgPremiumChicken from '../../assets/images/hero_food_premium_fried_chicken.jpg';
+import imgSpicyPaneer    from '../../assets/images/hero_food_spicy_paneer_pizza.jpg';
+import imgPaneerTikka    from '../../assets/images/hero_food_paneer_tikka_burger.jpg';
+import imgCrispyChicken  from '../../assets/images/hero_food_crispy_chicken_burger.jpg';
+
+const TOP_PICKS = [
+  { img: imgVolcanoBurger,  label: 'Chicken Volcano Burger', badge: '🔥 HOT',   price: '₹179', isVeg: false },
+  { img: imgSpicyPaneer,    label: 'Spicy Paneer Pizza',     badge: '⭐ BEST',  price: '₹129', isVeg: true  },
+  { img: imgPremiumChicken, label: 'Premium Fried Chicken',  badge: '👑 PRIME', price: '₹169', isVeg: false },
+  { img: imgPaneerTikka,    label: 'Paneer Tikka Burger',    badge: '💚 VEG',   price: '₹159', isVeg: true  },
+  { img: imgCrispyChicken,  label: 'Crispy Chicken Burger',  badge: '🍗 CRISP', price: '₹119', isVeg: false },
+];
 
 interface MenuProps {
   limit?: number;
@@ -63,38 +77,125 @@ export default function Menu({ limit, isHomePage = false }: MenuProps) {
 
       <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
         
-        {/* Header */}
-        <div className="text-center mb-12">
-          <motion.div 
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-3"
-          >
-            <span className="font-bebas text-[#9C0512] text-xs md:text-sm tracking-[0.4em] uppercase font-bold bg-[#9C0512]/10 border border-[#9C0512]/20 px-4 py-1.5 rounded-full">
-              SIZZLE <span className="text-[#F8D794]">•</span> SLICE <span className="text-[#F8D794]">•</span> SMILE
-            </span>
-          </motion.div>
+        {/* ── HOME PAGE: KFC-Style Top Picks Header ── */}
+        {isHomePage ? (
+          <div className="mb-14">
+            {/* Section label */}
+            <div className="text-center mb-8">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mb-3"
+              >
+                <span className="font-bebas text-[#9C0512] text-xs md:text-sm tracking-[0.4em] uppercase font-bold bg-[#9C0512]/10 border border-[#9C0512]/20 px-4 py-1.5 rounded-full inline-flex items-center gap-2">
+                  <Flame className="w-3.5 h-3.5 text-[#F8D794]" />
+                  SIZZLE <span className="text-[#F8D794]">•</span> SLICE <span className="text-[#F8D794]">•</span> SMILE
+                </span>
+              </motion.div>
 
-          <motion.h2 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-heading italic font-bold text-[#EFEACD] text-4xl md:text-6xl lg:text-7xl uppercase mb-4"
-          >
-            {isHomePage ? 'Our Culinary Menu' : 'Complete Cafe Menu'}
-          </motion.h2>
+              <motion.h2
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="font-heading italic font-bold text-[#EFEACD] text-4xl md:text-6xl lg:text-7xl uppercase mb-3"
+              >
+                Our Culinary Menu
+              </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-[#F8D794]/70 font-body text-sm md:text-base max-w-xl mx-auto leading-relaxed"
-          >
-            {isHomePage ? 'Explore our handcrafted sizzlers, pizzas, burgers & drinks' : 'Carefully curated recipes made fresh with premium ingredients'}
-          </motion.p>
-        </div>
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-[#F8D794]/70 font-body text-sm md:text-base max-w-xl mx-auto leading-relaxed mb-8"
+              >
+                Explore our handcrafted sizzlers, pizzas, burgers &amp; drinks
+              </motion.p>
+
+              {/* ── TOP 5 KFC-Style Food Cards ── */}
+              <div className="flex flex-wrap items-end justify-center gap-4 md:gap-6 py-6">
+                {TOP_PICKS.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30, scale: 0.85 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.5, ease: 'backOut' }}
+                    className="group flex flex-col items-center w-[110px] md:w-[140px] cursor-pointer"
+                  >
+                    {/* Circular Image */}
+                    <div className="relative w-[90px] h-[90px] md:w-[120px] md:h-[120px] rounded-full overflow-hidden border-[3px] border-[#F8D794]/40 group-hover:border-[#F8D794] shadow-[0_8px_32px_rgba(0,0,0,0.6)] group-hover:shadow-[0_8px_40px_rgba(156,5,18,0.5)] transition-all duration-400">
+                      <img
+                        src={item.img}
+                        alt={item.label}
+                        className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      {/* Inner vignette */}
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#0E0000]/50 via-transparent to-transparent" />
+                    </div>
+
+                    {/* Badge */}
+                    <span
+                      className={`-mt-3 z-10 text-[9px] md:text-[10px] font-bold tracking-widest px-2.5 py-0.5 rounded-full shadow-lg whitespace-nowrap
+                        ${item.isVeg
+                          ? 'bg-emerald-500 text-white'
+                          : 'bg-[#9C0512] text-[#EFEACD]'
+                        }`}
+                    >
+                      {item.badge}
+                    </span>
+
+                    {/* Name & Price */}
+                    <p className="mt-2 text-[11px] md:text-[13px] font-bold text-[#EFEACD] text-center leading-tight line-clamp-2 group-hover:text-[#F8D794] transition-colors px-1">
+                      {item.label}
+                    </p>
+                    <p className="text-[13px] md:text-base font-bebas text-[#F8D794] tracking-wider mt-1">
+                      {item.price}
+                    </p>
+
+                    {/* Veg/Non-Veg dot */}
+                    <div className={`w-3 h-3 rounded-full border mt-1 ${item.isVeg ? 'bg-emerald-500 border-emerald-700' : 'bg-[#9C0512] border-red-900'}`} />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* ── FULL MENU PAGE: Standard Header ── */
+          <div className="text-center mb-12">
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-3"
+            >
+              <span className="font-bebas text-[#9C0512] text-xs md:text-sm tracking-[0.4em] uppercase font-bold bg-[#9C0512]/10 border border-[#9C0512]/20 px-4 py-1.5 rounded-full">
+                SIZZLE <span className="text-[#F8D794]">•</span> SLICE <span className="text-[#F8D794]">•</span> SMILE
+              </span>
+            </motion.div>
+
+            <motion.h2 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-heading italic font-bold text-[#EFEACD] text-4xl md:text-6xl lg:text-7xl uppercase mb-4"
+            >
+              Complete Cafe Menu
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-[#F8D794]/70 font-body text-sm md:text-base max-w-xl mx-auto leading-relaxed"
+            >
+              Carefully curated recipes made fresh with premium ingredients
+            </motion.p>
+          </div>
+        )}
 
         {/* Search & Dietary Controls Container */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 bg-[#160808]/80 backdrop-blur-md p-4 rounded-2xl border border-[#F8D794]/15 shadow-xl">
